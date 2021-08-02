@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+API Info 
+Endpoints
+/film/{query}
+{query} string - film ID (or search text but this will take longer)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Searching for a film here without the ID will take longer as the API will use /search/ for you to find the film’s id then /film/ to fetch the film data.
 
-## Available Scripts
+/search/tt1375666
 
-In the project directory, you can run:
+returns:
+{
+	id: "tt1375666",
+	title: "Inception",
+	year: "2010",
+	length: "2h 28min",
+	rating: "8.8",
+	rating_votes: "1909950",
+	poster: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@.jpg",
+	plot: "A thief who steals corporate secrets...",
+	trailer: {
+		id: "vi4219471385",
+		link: "https://www.imdb.com/videoplayer/vi4219471385"
+	},
+	cast: [
+		{
+			actor: "Leonardo DiCaprio",
+			actor_id: "nm0000138",
+			character: "Cobb"
+		},
+		[...]
+	],
+	technical_specs: [
+		["Runtime", "2 hr 28 min (148 min)"],
+		["Sound Mix", "Dolby Digital | DTS | SDDS"],
+		[...]
+	]
+}
+/search/{query}
+{query} string - Search text of film, person or company
 
-### `yarn start`
+Returns live results straight from IMDB’s search
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> You cannot use a film’s id to search - use /film/ instead
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+/search/inception
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+returns:
+{
+	titles: [
+		{
+			id: "tt1375666",
+			title: "Inception",
+			image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@.jpg",
+		},
+		[...]
+	],
+	names: [],
+	companies: []
+}
